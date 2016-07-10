@@ -1,0 +1,299 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    <h:head>
+        <style>
+            body{margin:auto;text-align:center;
+                 width: 1350px;height:2000px;
+                 background-image: url(resource/background.jpg);background-size:1500px 1000px;background-repeat:no-repeat;background-attachment: fixed;}
+            div#header {text-align:center;
+                        margin:auto;
+                        height:180px; width: 90%;
+                        background-color:rgba(255,255,255,0.3);}
+            div#recommend{width:100%;height:80%;
+                          margin:auto;}
+            div#footer {text-align:center;
+                        position:relative;left: 20px;right: 20px;
+                        height:60px;width: 100%;
+                        background-color:rgba(255,255,255,0.5);}
+            div.sort{width:50%;height:100%;
+                     float:left;
+                     margin:auto;
+                     display: inline;}
+            a{text-decoration: none;}
+            li.num{width:100%;height:160px;
+                   margin-bottom:20px;
+                   background-color:rgba(255,255,255,0.5);
+                   list-style-type: none}
+            .pic{width: 40%;height:160px;
+                 float:left;
+                 display:inline;
+                 margin:0;}
+            p.brif{width:70%;
+                   float:left;
+                   text-align:justify;
+                   margin:0;
+                   display: inline}
+            h2.title{background-color:#FFE4E1}
+            li.num:hover{background-color:rgba(255,255,255,0.7);}
+        </style>
+        <title>Facelet Title</title>
+    </h:head>
+    
+    
+<h:body>
+    <p:growl id="growl" sticky="true" showDetail="true" />    
+    <div id="header">
+        <h1>吃喝玩乐在北京</h1>
+  
+        <h:form>
+            账号：
+            <p:inputText id="uname"  size ="15" required="false" value="#{userMB.name}" ></p:inputText>
+            <br/>
+            密码：
+            <p:password id="upass" required="false" size="15" value="#{userMB.password}"></p:password>
+            <br/>
+            <h:commandButton id="login" value="登陆" action="#{userMB.logButton()}" />
+            <h:commandButton id="register" value="注册" action="#{userMB.toRegister()}" />
+            <br/>
+            <p:selectBooleanCheckbox value="#{userMB.isLogged}" disabled="true"></p:selectBooleanCheckbox>
+            <a href="collect.xhtml">我的收藏</a>
+            <h:commandLink action="#{userMB.toCol()}" value="我的收藏"/>
+        </h:form>
+    </div>
+    <h:form id="form">
+    <h3 style="margin-top: 0">美食城</h3>
+    <p:ring id="basic" value="#{userMB.initialItems}" var="item">
+        #{item.bname}
+        <br/>
+            <p:commandButton  value="去美食城" action="#{userMB.foodNo(1)}">
+            </p:commandButton>
+    </p:ring>
+    </h:form>
+    
+    <div id="recommend">
+        <h:form>
+        <div class="sort">
+            
+            <a href="foodpage1.xhtml">
+                <h2>今天吃什么</h2>
+            </a>
+            <p:carousel value="#{userMB.allItems}" headerText="Responsive" var="item" itemStyle="text-align:center" >
+                <p:panelGrid columns="2" style="width:100%;margin:10px 0px" columnClasses="label,value" styleClass="ui-panelgrid-blank">
+                    <f:facet name="header">
+                        #{item.bname}
+                    </f:facet>
+                    <h:commandLink value="#{item.bname}" action="#{userMB.obj(item)}"/> 
+                </p:panelGrid>   
+            </p:carousel>
+            
+            
+            
+            <ul>
+                <h:commandLink action="#{userMB.foodNo(0)}" value="#{userMB.initialItems[0].bname}"/>
+                <!--<a href="food.xhtml" action="{userMB.foodNo(0)}">-->
+                    <li class="num">
+                        <h:graphicImage class="pic" url="#{userMB.initialItems[0].bpic}"></h:graphicImage>
+                        <br/>
+                        <p class="brif">
+                            <h3>#{userMB.initialItems[0].bname}</h3>
+                            #{userMB.initialItems[0].binfo}<br/>
+                            #{userMB.initialItems[0].baddress}<br/>
+                        </p>
+                    </li> 
+               <!-- </a>-->
+                <!--<a href="food.xhtml" action="{user.foodN0(1)}">-->
+                <h:commandLink action="#{userMB.foodNo(1)}" value="#{userMB.initialItems[0].bname}"/>
+                    <li class="num">
+                        <h:graphicImage class="pic" url="#{userMB.initialItems[0].bpic}"></h:graphicImage>
+                        <br/>
+                        <p class="brif">
+                            <h3>#{userMB.initialItems[0].bname}</h3>
+                            #{userMB.initialItems[0].binfo}<br/>
+                            #{userMB.initialItems[0].binfo}<br/>
+                        </p>
+                    </li> 
+               <!-- </a>-->
+                <!--<a href="food.xhtml" action="{user.foodNo(1)}">-->
+                <h:commandLink action="#{userMB.foodNo(2)}" value="#{userMB.initialItems[0].bname}"/>
+                    <li class="num">
+                        <h:graphicImage class="pic" value="resource/hhh.jpg"></h:graphicImage>
+                        <br/>
+                        <p class="brif">
+                            <h3>金鼎轩</h3>
+                            人均：76元 | 口味：8.7 | 环境：7.8 | 服务：7.3<br/>
+                            地址:东城区 和平里西街77号(近地坛南门)<br/>
+                        </p>
+                    </li> 
+                <!--</a>-->
+                <a href="food.xhtml" action="#{userMB.foodNo(0)}">
+                    <li class="num">
+                        <h:graphicImage class="pic" value="resource/hhh.jpg"></h:graphicImage>
+                        <br/>
+                        <p class="brif">
+                            <h3>金鼎轩</h3>
+                            人均：76元 | 口味：8.7 | 环境：7.8 | 服务：7.3<br/>
+                            地址:东城区 和平里西街77号(近地坛南门)<br/>
+                        </p>
+                    </li> 
+                </a>
+                <a href="food.xhtml" action="#{userMB.foodNo(2)}">
+                    <li class="num">
+                        <h:graphicImage class="pic" value="resource/hhh.jpg"></h:graphicImage>
+                        <br/>
+                        <p class="brif">
+                            <h3>金鼎轩</h3>
+                            人均：76元 | 口味：8.7 | 环境：7.8 | 服务：7.3<br/>
+                            地址:东城区 和平里西街77号(近地坛南门)<br/>
+                        </p>
+                    </li> 
+                </a>
+                <a href="food.xhtml" action="#{userMB.foodNo(0)}">
+                    <li class="num">
+                        <h:graphicImage class="pic" value="resource/hhh.jpg"></h:graphicImage>
+                        <br/>
+                        <p class="brif">
+                            <h3>金鼎轩</h3>
+                            人均：76元 | 口味：8.7 | 环境：7.8 | 服务：7.3<br/>
+                            地址:东城区 和平里西街77号(近地坛南门)<br/>
+                        </p>
+                    </li> 
+                </a>
+                <a href="food.xhtml" action="#{userMB.foodNo(0)}">
+                    <li class="num">
+                        <h:graphicImage class="pic" value="resource/hhh.jpg"></h:graphicImage>
+                        <br/>
+                        <p class="brif">
+                            <h3>金鼎轩</h3>
+                            人均：76元 | 口味：8.7 | 环境：7.8 | 服务：7.3<br/>
+                            地址:东城区 和平里西街77号(近地坛南门)<br/>
+                        </p>
+                    </li> 
+                </a>
+                <a href="food.xhtml" action="#{userMB.foodNo(0)}">
+                    <li class="num">
+                        <h:graphicImage class="pic" value="resource/hhh.jpg"></h:graphicImage>
+                        <br/>
+                        <p class="brif">
+                            <h3>金鼎轩</h3>
+                            人均：76元 | 口味：8.7 | 环境：7.8 | 服务：7.3<br/>
+                            地址:东城区 和平里西街77号(近地坛南门)<br/>
+                        </p>
+                    </li> 
+                </a>
+            </ul>
+        </div>
+
+        <div class="sort">
+            <a href="funpage.xhtml">
+                <h2>找点乐子</h2>
+            </a>
+            <ul>
+                <a href="fun.xhtml" action="#{userMB.foodNo(0)}">
+                    <li class="num">
+                        <h:graphicImage class="pic" value="resource/hhh.jpg"  ></h:graphicImage>
+                        <br/>
+                        <p class="brif">
+                            <h3>金鼎轩</h3>
+                            人均：76元 | 口味：8.7 | 环境：7.8 | 服务：7.6<br/>
+                            地址:东城区 和平里西街77号(近地坛南门)<br/>
+                        </p>
+                    </li> 
+                </a>
+                <a href="fun.xhtml" action="#{userMB.foodNo(0)}">
+                    <li class="num">
+                        <h:graphicImage class="pic" value="resource/hhh.jpg"  ></h:graphicImage>
+                        <br/>
+                        <p class="brif">
+                            <h3>金鼎轩</h3>
+                            人均：76元 | 口味：8.7 | 环境：7.8 | 服务：7.6<br/>
+                            地址:东城区 和平里西街77号(近地坛南门)<br/>
+                        </p>
+                    </li> 
+                </a>
+                <a href="fun.xhtml" action="#{userMB.foodNo(0)}">
+                    <li class="num">
+                        <h:graphicImage class="pic" value="resource/hhh.jpg"  ></h:graphicImage>
+                        <br/>
+                        <p class="brif">
+                            <h3>金鼎轩</h3>
+                            人均：76元 | 口味：8.7 | 环境：7.8 | 服务：7.6<br/>
+                            地址:东城区 和平里西街77号(近地坛南门)<br/>
+                        </p>
+                    </li> 
+                </a>
+                <a href="fun.xhtml" action="#{userMB.foodNo(0)}">
+                    <li class="num">
+                        <h:graphicImage class="pic" value="resource/hhh.jpg"  ></h:graphicImage>
+                        <br/>
+                        <p class="brif">
+                            <h3>金鼎轩</h3>
+                            人均：76元 | 口味：8.7 | 环境：7.8 | 服务：7.6<br/>
+                            地址:东城区 和平里西街77号(近地坛南门)<br/>
+                        </p>
+                    </li> 
+                </a>
+                <a href="fun.xhtml" action="#{userMB.foodNo(0)}">
+                    <li class="num">
+                        <h:graphicImage class="pic" value="resource/hhh.jpg"  ></h:graphicImage>
+                        <br/>
+                        <p class="brif">
+                            <h3>金鼎轩</h3>
+                            人均：76元 | 口味：8.7 | 环境：7.8 | 服务：7.6<br/>
+                            地址:东城区 和平里西街77号(近地坛南门)<br/>
+                        </p>
+                    </li> 
+                </a>
+                <a href="fun.xhtml" action="#{userMB.foodNo(0)}">
+                    <li class="num">
+                        <h:graphicImage class="pic" value="resource/hhh.jpg"  ></h:graphicImage>
+                        <br/>
+                        <p class="brif">
+                            <h3>金鼎轩</h3>
+                            人均：76元 | 口味：8.7 | 环境：7.8 | 服务：7.6<br/>
+                            地址:东城区 和平里西街77号(近地坛南门)<br/>
+                        </p>
+                    </li> 
+                </a>
+                <a href="fun.xhtml" action="#{userMB.foodNo(0)}">
+                    <li class="num">
+                        <h:graphicImage class="pic" value="resource/hhh.jpg"  ></h:graphicImage>
+                        <br/>
+                        <p class="brif">
+                            <h3>金鼎轩</h3>
+                            人均：76元 | 口味：8.7 | 环境：7.8 | 服务：7.6<br/>
+                            地址:东城区 和平里西街77号(近地坛南门)<br/>
+                        </p>
+                    </li> 
+                </a>
+                <a href="fun.xhtml" action="#{userMB.foodNo(0)}">
+                    <li class="num">
+                        <h:graphicImage class="pic" value="resource/hhh.jpg"  ></h:graphicImage>
+                        <br/>
+                        <p class="brif">
+                            <h3>金鼎轩</h3>
+                            人均：76元 | 口味：8.7 | 环境：7.8 | 服务：7.6<br/>
+                            地址:东城区 和平里西街77号(近地坛南门)<br/>
+                        </p>
+                    </li> 
+                </a>
+                
+             
+
+            </ul>
+        </div>
+        </h:form>
+    </div>
+
+    <div id="footer">
+        <p>我们是一个神奇的团队</p>
+        <p>详情请联系40088820820</p>
+    </div>
+    
+</h:body>
+</html>
+

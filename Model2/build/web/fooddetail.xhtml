@@ -1,0 +1,80 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>吃喝玩乐在北京</title>
+        <link href="food1.css" rel="stylesheet" type="text/css"></link>
+    </h:head>
+    <h:body>
+        <!--整体外层容器-->
+        <div id="container">
+            <div id="traverse">
+            <ul>
+                <li><a href="homepage.xhtml">首页</a></li>
+                <li><a href="#">我的足迹</a></li>
+                <li><a href="collect.xhtml">我的收藏</a></li> 
+                <li><a href="#">联系我们</a></li> 
+            </ul>
+            </div>
+            <!--header-->
+            <div id="header">
+                <h1>吃喝玩乐在北京</h1>
+                <h:form>
+                    <div id="regist">
+                        <h:panelGrid columns="2" cellpadding="5" >
+                            <p:outputLabel value="账号：" style="font-weight:bold"/>
+                            <p:inputText value="#{userMB.name}" size="10"></p:inputText>
+                            <p:outputLabel value="密码：" style="font-weight:bold" />
+                            <p:inputText value="#{userMB.password}" size="10"></p:inputText>
+                            <p:commandButton value="登陆" action="#userMB.logButton()" />
+                            <p:commandButton value="注册" action="register" />
+                        </h:panelGrid>
+                    </div>
+                </h:form>
+            </div>
+
+            <div id="businessinfo">                
+                <div class="info-text">
+                    <h2>商家介绍</h2>                                                              
+                </div>
+                <h3>&nbsp;&nbsp;#{userBean.viewed.binfo}</h3>
+                <br/>
+            </div>
+            <!--left-->
+            <div id="left" >
+		<img src="#{userBean.viewed.bpic}" id="rotateimage" style="height:100%;width:100%" alt=""/>
+
+            </div>            
+            <!--right-->
+            <div id="right">                
+                <div class="right-text">
+                    <h4>&nbsp;&nbsp;商家名称:#{userBean.viewed.bname}</h4>
+                    <form>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                    
+                    <p:commandButton action="#{userMB.detailToCol()}" value="收藏本店" id="iconOnly"  title="Icon Only" />                  
+                    </form>
+                    <ul>
+                        <li>商家服务：提供免费WIFI</li><br/>
+                        <li>营业时间：10:00-20:00</li><br/>
+                        <li>人均：¥100</li><br/>
+                        <li>商家ID：#{userBean.viewed.bid}</li><br/>
+                        <li>餐厅地址：#{userBean.viewed.baddress}</li><br/>
+                        <li>联系电话：#{userBean.viewed.tel}</li><br/>                                             
+                    </ul>
+                </div>
+            </div>
+            <!--footer-->
+            <div id="footer">
+                <div class="footer-text">
+                    &nbsp; &copy;版权所有&nbsp;&nbsp;&nbsp; 2016.北京邮电大学软件学院<img src="resource/d1.jpg"/>
+		</div>
+            </div>           
+        </div>
+        <br/>
+        <h:link outcome="welcomePrimefaces" value="Primefaces 欢迎使用页" />
+    </h:body>
+</html>
+
+

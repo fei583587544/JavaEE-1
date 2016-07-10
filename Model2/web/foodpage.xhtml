@@ -1,0 +1,99 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+        <title>吃喝玩乐在北京</title>
+        <link href="newcss.css" rel = "stylesheet" type = "text/css"></link>
+    </h:head>
+    <h:body>
+        <!--整体外层容器-->
+        <div id = "container">
+            <div id = "banner">
+                <h1>吃喝玩乐在北京</h1>
+                <h:form>
+                账号：
+                <h:inputText id="uname"  size ="15" required="false" value="#{userMB.name}" label="账号" ></h:inputText>
+                <br/>
+                密码：
+                <h:inputText id="upass" size ="15" required="false" value="#{userMB.password}" label="密码" ></h:inputText>
+                <br/>
+                <h:commandButton id="login" value="登录" action="login" />
+                <h:commandButton id="register" value="注册" action="register" />
+                </h:form>
+            </div>
+            <div id = "globallink">
+                <img src ="resource/logo.png" height="25px" width="200px" />
+                <a href="homepage.xhtml">首页</a>
+                <a href="#">我的收藏</a>
+                <a href="#">我的足迹</a>
+            </div>
+            <div id = "left">
+                <h2>分类</h2>
+                <hr/>
+                <ul>
+                    <h:form>
+                    <li><h:commandLink value="自助" action="#{userMB.findTag(1)}"/></li>                
+                    <li><h:commandLink value="西餐" action="#{userMB.findTag(2)}" /></li>
+                    <li><h:commandLink value="中餐" action="#{userMB.findTag(3)}" /></li>
+                    <li><h:commandLink value="美式快餐" action="#{userMB.findTag(4)}" /></li>
+                    <li><h:commandLink value="日本料理" action="#{userMB.findTag(5)}" /></li>
+                    <li><h:commandLink value="韩国料理" action="#{userMB.findTag(6)}" /></li>
+                    </h:form>
+                </ul>
+            </div>
+            <div id = "right">
+                <h:form>
+                <h:inputText id="searchinfo" size="30" required="false" value="" label="搜索"></h:inputText>
+                <h:commandButton id ="search" value ="搜索" action="foodpage"></h:commandButton>
+                </h:form>
+                <div id ="subcontainer">
+                    <ul>
+                        <h:form>
+                        <li>
+                            <img src="resource/blog-img-1.jpg" class="rotate"/>
+                            <h3><h:commandLink value="#{userMB.tagItems[0].bname}" action="userMB.foodNo(0)" /></h3>
+                            <p>刚刚出炉的面包，比世界上最名贵的香水还好闻。坚果、燕麦和奶酪在烤箱里混合。黄色灯光照着金灿灿的面包，厚墩墩的可爱。透明柜橱里，有蓬松阳光的味道。
+                            快来找到你最爱的那口小幸福！</p></li>
+                        <li>
+                            <img src="resource/blog-img-2.jpg" class="rotate"/>
+                            <h3><h:commandLink value="#{userMB.tagItems[1].bname}" action="a" /></h3>
+                            <p>刚刚出炉的面包，比世界上最名贵的香水还好闻。坚果、燕麦和奶酪在烤箱里混合。黄色灯光照着金灿灿的面包，厚墩墩的可爱。透明柜橱里，有蓬松阳光的味道。
+                            快来找到你最爱的那口小幸福！</p>
+                        </li>
+                        <li>
+                            <img src="resource/blog-img-3.jpg" class="rotate"/>
+                            <h3><h:commandLink value="帝都最好吃的面包都在这里啦！" action="a" /></h3>
+                            <p>刚刚出炉的面包，比世界上最名贵的香水还好闻。坚果、燕麦和奶酪在烤箱里混合。黄色灯光照着金灿灿的面包，厚墩墩的可爱。透明柜橱里，有蓬松阳光的味道。
+                            快来找到你最爱的那口小幸福！</p>
+                        </li>
+                        <li>
+                            <img src="resource/blog-img-4.jpg" class="rotate"/>
+                            <h3><h:commandLink value="帝都最好吃的面包都在这里啦！" action="a" /></h3>
+                            <p>刚刚出炉的面包，比世界上最名贵的香水还好闻。坚果、燕麦和奶酪在烤箱里混合。黄色灯光照着金灿灿的面包，厚墩墩的可爱。透明柜橱里，有蓬松阳光的味道。
+                            快来找到你最爱的那口小幸福！</p>
+                        </li>
+                        <li>
+                            <img src="resource/blog-img-5.jpg" class="rotate"/>
+                            <h3><h:commandLink value="帝都最好吃的面包都在这里啦！" action="a" /></h3>
+                            <p>刚刚出炉的面包，比世界上最名贵的香水还好闻。坚果、燕麦和奶酪在烤箱里混合。黄色灯光照着金灿灿的面包，厚墩墩的可爱。透明柜橱里，有蓬松阳光的味道。
+                            快来找到你最爱的那口小幸福！</p>
+                        </li>
+                         <li>
+                            <img src="resource/blog-img-6.jpg" class="rotate"/>
+                            <h3><h:commandLink value="帝都最好吃的面包都在这里啦！" action="a" /></h3>
+                            <p>刚刚出炉的面包，比世界上最名贵的香水还好闻。坚果、燕麦和奶酪在烤箱里混合。黄色灯光照着金灿灿的面包，厚墩墩的可爱。透明柜橱里，有蓬松阳光的味道。
+                            快来找到你最爱的那口小幸福！</p>
+                        </li>
+                        </h:form>
+                    </ul>
+                </div>
+            </div>
+            <div id = "footer">
+                <p>我们是一个神奇的团队   详情请联系：40088208820</p>
+            </div>
+        </div>
+    </h:body>
+</html>
+
+

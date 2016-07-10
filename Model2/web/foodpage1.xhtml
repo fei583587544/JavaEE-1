@@ -1,0 +1,122 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>吃喝玩乐在北京</title>
+        <link href="css/foodpagecss.css" rel = "stylesheet" type = "text/css"></link>
+    </h:head>
+    
+    <h:body> 
+    <p:growl id="growl" sticky="true" showDetail="true" />
+    <div id="header">
+        <h1>吃喝玩乐在北京</h1>
+        <h:form>
+            <div id="regist">
+                <h:panelGrid columns="2" cellpadding="5" >
+                    <p:outputLabel value="账号：" style="font-weight:bold"/>
+                    <p:inputText value="#{userMB.name}" size="10"></p:inputText>
+
+                    <p:outputLabel value="密码：" style="font-weight:bold" />
+                    <p:inputText value="#{userMB.password}" size="10"></p:inputText>
+
+                    <p:commandButton value="登陆" action="#{userMB.logButton()}" />
+                    <p:commandButton value="注册" action="#{userMB.toRegister()}" />
+                </h:panelGrid>
+            </div>
+        </h:form>
+        </div>
+        <div id = "globallink">
+            <img src ="resource/logo.png" height="30px" />
+            <a href="homepage.xhtml">首页</a>
+            <h:form>
+            <h:commandLink action="#{userMB.toCol()}" value="我的收藏"/>
+            </h:form>
+
+        </div>
+        <div id = "left">
+            <h2>分类</h2>
+            <hr/>   
+            <ul>
+                <h:form>
+                    <li><h:commandLink value="自助" action="#{userMB.findTag(1)}" /></li>                
+                    <li><h:commandLink value="西餐" action="#{userMB.findTag(2)}" /></li>
+                    <li><h:commandLink value="中餐" action="#{userMB.findTag(3)}" /></li>
+                    <li><h:commandLink value="美式快餐" action="#{userMB.findTag(4)}" /></li>
+                    <li><h:commandLink value="日本料理" action="#{userMB.findTag(5)}" /></li>
+                    <li><h:commandLink value="韩国料理" action="#{userMB.findTag(6)}" /></li>
+                </h:form>
+            </ul>
+            <!--<h:form>
+               <p:growl autoUpdate="true"/>
+               <p:panelMenu style="width:200px">
+                   <p:menuitem value="自助" action = "#findTag(1)"/>
+                   <p:menuitem value="中餐" actionListener="{menuView.save}"/>
+                   <p:menuitem value="西餐" actionListener="{menuView.save}"/>
+                   <p:menuitem value="美式快餐" actionListener="{menuView.save}"/>
+                   <p:menuitem value="日本料理" actionListener="{menuView.save}"/>
+                   <p:menuitem value="韩国料理" actionListener="{menuView.save}"/>
+               </p:panelMenu>
+            </h:form>-->
+        </div>
+        <div id = "right">
+            <ul>
+                <h:form>
+                <li class="orderList">
+                    <img src="resource/blog-img-1.jpg" class="picture"/>
+                    <h:commandLink value="#{userMB.tagItems[0].bname}" action = "#{userMB.foodTNo(0)}">
+                    <h3>味多美</h3>
+                    </h:commandLink>
+                    <p class="picInfo">刚刚出炉的面包，比世界上最名贵的香水还好闻。坚果、燕麦和奶酪在烤箱里混合。黄色灯光照着金灿灿的面包，厚墩墩的可爱。透明柜橱里，有蓬松阳光的味道。快来找到你最爱的那口小幸福！</p>
+                </li>
+
+                <li class="orderList">
+                    <img src="resource/blog-img-2.jpg" class="picture"/>
+                    <h:commandLink value="#{userMB.tagItems[1].bname}" action = "#{userMB.foodTNo(0)}">
+                    <h3>味多美</h3>
+                    </h:commandLink>
+                    <p class="picInfo">刚刚出炉的面包，比世界上最名贵的香水还好闻。坚果、燕麦和奶酪在烤箱里混合。黄色灯光照着金灿灿的面包，厚墩墩的可爱。透明柜橱里，有蓬松阳光的味道。快来找到你最爱的那口小幸福！</p>
+                </li>
+
+                <li class="orderList">
+                    <img src="resource/blog-img-3.jpg" class="picture"/>
+                    <h:commandLink value="#{userMB.tagItems[2].bname}" action = "#{userMB.foodTNo(0)}">
+                    <h3>味多美</h3>
+                    </h:commandLink>
+                    <p class="picInfo">刚刚出炉的面包，比世界上最名贵的香水还好闻。坚果、燕麦和奶酪在烤箱里混合。黄色灯光照着金灿灿的面包，厚墩墩的可爱。透明柜橱里，有蓬松阳光的味道。快来找到你最爱的那口小幸福！</p>
+                </li>
+
+                <li class="orderList">
+                    <img src="resource/blog-img-4.jpg" class="picture"/>
+                    <h:commandLink value="#{userMB.tagItems[3].bname}" action = "#{userMB.foodTNo(0)}">
+                    <h3>味多美</h3>
+                    </h:commandLink>
+                    <p class="picInfo">刚刚出炉的面包，比世界上最名贵的香水还好闻。坚果、燕麦和奶酪在烤箱里混合。黄色灯光照着金灿灿的面包，厚墩墩的可爱。透明柜橱里，有蓬松阳光的味道。快来找到你最爱的那口小幸福！</p>
+                </li>
+
+                <li class="orderList">
+                    <img src="resource/blog-img-5.jpg" class="picture"/>
+                    <h:commandLink value="#{userMB.tagItems[4].bname}" action = "#{userMB.foodTNo(0)}">
+                    <h3>味多美</h3>
+                    </h:commandLink>
+                    <p class="picInfo">刚刚出炉的面包，比世界上最名贵的香水还好闻。坚果、燕麦和奶酪在烤箱里混合。黄色灯光照着金灿灿的面包，厚墩墩的可爱。透明柜橱里，有蓬松阳光的味道。快来找到你最爱的那口小幸福！</p>
+                </li>
+
+                <li class="orderList">
+                    <img src="resource/blog-img-6.jpg" class="picture"/>
+                    <h:commandLink action = "#{userMB.foodTNo(0)}">
+                    <h3>味多美</h3>
+                    </h:commandLink>
+                    <p class="picInfo">刚刚出炉的面包，比世界上最名贵的香水还好闻。坚果、燕麦和奶酪在烤箱里混合。黄色灯光照着金灿灿的面包，厚墩墩的可爱。透明柜橱里，有蓬松阳光的味道。快来找到你最爱的那口小幸福！</p>
+                </li>
+                </h:form>
+            </ul>    
+        </div>
+        <div id = "footer">
+            
+            <p>我们是一个神奇的团队   详情请联系：40088208820</p>
+        </div>
+    </h:body>
+</html>
+

@@ -1,0 +1,292 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui" >
+
+    <h:head>
+        <style>
+            body{margin:auto;text-align:center;
+                 width: 1300px;
+                 background-image: url(resource/background.jpg);
+               background-size:1300px 1000px;
+                background-repeat:no-repeat;
+                background-attachment: fixed;
+                 }
+            div#header {align:center;
+                        margin-bottom:20px;
+                        height:15%; width: 90%;
+                        background-color:rgba(255,255,255,0.3);}
+            div#recommend{width:100%;height:80%;
+                          margin:auto;
+                          background-color:rgba(255,255,255,0.3);
+                          margin-bottom:20px;}
+            div#footer {text-align:center;background-color:rgba(255,255,255,0.5);}
+            div.sort{width:50%;height:100%;
+                     float:left;
+                     margin:auto;
+                     display: inline; 
+            }
+           
+            a{text-decoration: none;}
+            li.num{width:100%;height:160px;
+                   margin-bottom:20px;
+                   background-color:rgba(255,255,255,1);
+                   list-style-type: none}
+            .pic{width: 40%;height:160px;
+                 float:left;
+                 display:inline;
+                 margin:0;}
+            p.brif{width:70%;
+                   float:left;
+                   text-align:justify;
+                   margin:0;
+                   display: inline}
+            h2.title{background-color:#FFE4E1}
+            li.num:hover{background-color:rgba(255,255,255,0.7);}
+            div#regist{margin-left: auto;width: 20%;}
+        </style>
+        <title>Facelet Title</title>
+    </h:head>
+
+
+    <h:body>
+
+        <div id="header">
+            <h1>吃喝玩乐在北京</h1>
+            <h:form>
+                <div id="regist">
+                    <h:panelGrid columns="2" cellpadding="5" >
+                        <p:outputLabel value="账号：" style="font-weight:bold"/>
+                        <p:inputText value="#{userMB.name}" size="10" required="true"></p:inputText>
+
+
+                        <p:outputLabel value="密码：" style="font-weight:bold" />
+                        <p:inputText  id="password" value="#{userMB.password}" size="10" required="true"></p:inputText>
+
+                        <p:commandButton value="登陆" action="#userMB.logButton()" />
+                        <p:commandButton value="注册" action="a" />
+                    </h:panelGrid>
+
+                </div>
+            </h:form>
+        </div>
+
+
+        <div id="recommend">
+            <h:form>
+                <div class="sort" id="food">
+                    <a href="foodpage.xhtml">
+                        <h2>今天吃什么</h2>
+                    </a>
+
+                    <ul>
+                        <a href="food.xhtml" action="#{userMB.foodNo(0)}">
+                            <li class="num">
+                                <h:graphicImage class="pic" url="#{userMB.initialItems[0].bpic}"></h:graphicImage>
+                                <br/>
+                                <p class="brif">
+                                    <h3>#{userMB.initialItems[0].bname}</h3>
+                                    <p>地址：#{userMB.initialItems[0].baddress}</p>
+                                    <p>电话：#{userMB.initialItems[0].btel}</p>
+                                    <p>简介：#{userMB.initialItems[0].binfo}</p>
+                                </p>
+                            </li> 
+                        </a>
+                        <a href="food.xhtml" action="#{userMB.foodNo(1)}">
+                            <li class="num">
+                                <h:graphicImage class="pic" url="#{userMB.initialItems[1].bpic}"></h:graphicImage>
+                                <br/>
+                                <p class="brif">
+                                    <h3>#{userMB.initialItems[1].bname}</h3>
+                                    <p>地址：#{userMB.initialItems[1].baddress}</p>
+                                    <p>电话：#{userMB.initialItems[1].btel}</p>
+                                    <p>简介：#{userMB.initialItems[1].binfo}</p>
+                                </p>
+                            </li> 
+                        </a>
+                        <a href="food.xhtml" action="#{userMB.foodNo(2)}">
+                            <li class="num">
+                                <h:graphicImage class="pic" url="#{userMB.initialItems[2].bpic}"></h:graphicImage>
+                                <br/>
+                                <p class="brif">
+                                    <h3>#{userMB.initialItems[2].bname}</h3>
+                                    <p>地址：#{userMB.initialItems[2].baddress}</p>
+                                    <p>电话：#{userMB.initialItems[2].btel}</p>
+                                    <p>简介：#{userMB.initialItems[2].binfo}</p>
+                                </p>
+                            </li> 
+                        </a>
+                        <a href="food.xhtml" action="#{userMB.foodNo(3)}">
+                            <li class="num">
+                                <h:graphicImage class="pic" url="#{userMB.initialItems[3].bpic}"></h:graphicImage>
+                                <br/>
+                                <p class="brif">
+                                    <h3>#{userMB.initialItems[3].bname}</h3>
+                                    <p>地址：#{userMB.initialItems[3].baddress}</p>
+                                    <p>电话：#{userMB.initialItems[3].btel}</p>
+                                    <p>简介：#{userMB.initialItems[3].binfo}</p>
+                                </p>
+                            </li> 
+                        </a>
+                        <a href="food.xhtml" action="#{userMB.foodNo(4)}">
+                            <li class="num">
+                                <h:graphicImage class="pic" url="#{userMB.initialItems[4].bpic}"></h:graphicImage>
+                                <br/>
+                                <p class="brif">
+                                    <h3>#{userMB.initialItems[4].bname}</h3>
+                                    <p>地址：#{userMB.initialItems[4].baddress}</p>
+                                    <p>电话：#{userMB.initialItems[4].btel}</p>
+                                    <p>简介：#{userMB.initialItems[4].binfo}</p>
+                                </p>
+                            </li> 
+                        </a>
+                        <a href="food.xhtml" action="#{userMB.foodNo(5)}">
+                            <li class="num">
+                                <h:graphicImage class="pic" url="#{userMB.initialItems[5].bpic}"></h:graphicImage>
+                                <br/>
+                                <p class="brif">
+                                    <h3>#{userMB.initialItems[5].bname}</h3>
+                                    <p>地址：#{userMB.initialItems[5].baddress}</p>
+                                    <p>电话：#{userMB.initialItems[5].btel}</p>
+                                    <p>简介：#{userMB.initialItems[5].binfo}</p>
+                                </p>
+                            </li> 
+                        </a>
+                        <a href="food.xhtml" action="#{userMB.foodNo(6)}">
+                            <li class="num">
+                                <h:graphicImage class="pic" url="#{userMB.initialItems[6].bpic}"></h:graphicImage>
+                                <br/>
+                                <p class="brif">
+                                    <h3>#{userMB.initialItems[6].bname}</h3>
+                                    <p>地址：#{userMB.initialItems[6].baddress}</p>
+                                    <p>电话：#{userMB.initialItems[6].btel}</p>
+                                    <p>简介：#{userMB.initialItems[6].binfo}</p>
+                                </p>
+                            </li> 
+                        </a>
+                        <a href="food.xhtml" action="#{userMB.foodNo(7)}">
+                            <li class="num">
+                                <h:graphicImage class="pic" url="#{userMB.initialItems[7].bpic}"></h:graphicImage>
+                                <br/>
+                                <p class="brif">
+                                    <h3>#{userMB.initialItems[7].bname}</h3>
+                                    <p>地址：#{userMB.initialItems[7].baddress}</p>
+                                    <p>电话：#{userMB.initialItems[7].btel}</p>
+                                    <p>简介：#{userMB.initialItems[7].binfo}</p>
+                                </p>
+                            </li> 
+                        </a>
+
+                    </ul>
+                </div>
+
+                <div class="sort" id="fun">
+                    <a href="funpage.xhtml">
+                        <h2>找点乐子</h2>
+                    </a>
+                    <ul>
+                        <a href="fun.xhtml" action="#{user.foodNO}">
+                            <li class="num">
+                                <h:graphicImage class="pic" value="resource/hhh.jpg"  ></h:graphicImage>
+                                <br/>
+                                <p class="brif">
+                                    <h3>金鼎轩</h3>
+                                    人均：76元 | 口味：8.7 | 环境：7.8 | 服务：7.6<br/>
+                                    地址:东城区 和平里西街77号(近地坛南门)<br/>
+                                </p>
+                            </li> 
+                        </a>
+                        <a href="fun.xhtml" action="#{user.foodNO}">
+                            <li class="num">
+                                <h:graphicImage class="pic" value="resource/hhh.jpg"  ></h:graphicImage>
+                                <br/>
+                                <p class="brif">
+                                    <h3>金鼎轩</h3>
+                                    人均：76元 | 口味：8.7 | 环境：7.8 | 服务：7.6<br/>
+                                    地址:东城区 和平里西街77号(近地坛南门)<br/>
+                                </p>
+                            </li> 
+                        </a>
+                        <a href="fun.xhtml" action="#{user.foodNO}">
+                            <li class="num">
+                                <h:graphicImage class="pic" value="resource/hhh.jpg"  ></h:graphicImage>
+                                <br/>
+                                <p class="brif">
+                                    <h3>金鼎轩</h3>
+                                    人均：76元 | 口味：8.7 | 环境：7.8 | 服务：7.6<br/>
+                                    地址:东城区 和平里西街77号(近地坛南门)<br/>
+                                </p>
+                            </li> 
+                        </a>
+                        <a href="fun.xhtml" action="#{user.foodNO}">
+                            <li class="num">
+                                <h:graphicImage class="pic" value="resource/hhh.jpg"  ></h:graphicImage>
+                                <br/>
+                                <p class="brif">
+                                    <h3>金鼎轩</h3>
+                                    人均：76元 | 口味：8.7 | 环境：7.8 | 服务：7.6<br/>
+                                    地址:东城区 和平里西街77号(近地坛南门)<br/>
+                                </p>
+                            </li> 
+                        </a>
+                        <a href="fun.xhtml" action="#{user.foodNO}">
+                            <li class="num">
+                                <h:graphicImage class="pic" value="resource/hhh.jpg"  ></h:graphicImage>
+                                <br/>
+                                <p class="brif">
+                                    <h3>金鼎轩</h3>
+                                    人均：76元 | 口味：8.7 | 环境：7.8 | 服务：7.6<br/>
+                                    地址:东城区 和平里西街77号(近地坛南门)<br/>
+                                </p>
+                            </li> 
+                        </a>
+                        <a href="fun.xhtml" action="#{user.foodNO}">
+                            <li class="num">
+                                <h:graphicImage class="pic" value="resource/hhh.jpg"  ></h:graphicImage>
+                                <br/>
+                                <p class="brif">
+                                    <h3>金鼎轩</h3>
+                                    人均：76元 | 口味：8.7 | 环境：7.8 | 服务：7.6<br/>
+                                    地址:东城区 和平里西街77号(近地坛南门)<br/>
+                                </p>
+                            </li> 
+                        </a>
+                        <a href="fun.xhtml" action="#{user.foodNO}">
+                            <li class="num">
+                                <h:graphicImage class="pic" value="resource/hhh.jpg"  ></h:graphicImage>
+                                <br/>
+                                <p class="brif">
+                                    <h3>金鼎轩</h3>
+                                    人均：76元 | 口味：8.7 | 环境：7.8 | 服务：7.6<br/>
+                                    地址:东城区 和平里西街77号(近地坛南门)<br/>
+                                </p>
+                            </li> 
+                        </a>
+                        <a href="fun.xhtml" action="#{user.foodNO}">
+                            <li class="num">
+                                <h:graphicImage class="pic" value="resource/hhh.jpg"  ></h:graphicImage>
+                                <br/>
+                                <p class="brif">
+                                    <h3>金鼎轩</h3>
+                                    人均：76元 | 口味：8.7 | 环境：7.8 | 服务：7.6<br/>
+                                    地址:东城区 和平里西街77号(近地坛南门)<br/>
+                                </p>
+                            </li> 
+                        </a>
+
+
+
+                    </ul>
+                </div>
+            </h:form>
+        </div>
+
+        <div id="footer">
+            <p>我们是一个神奇的团队</p>
+            <p>详情请联系40088820820</p>
+        </div>
+
+    </h:body>
+</html>
+
